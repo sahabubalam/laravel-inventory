@@ -47,3 +47,47 @@ Route::get('/add-advanced-salary', 'SalaryController@index')->name('add.salary')
 Route::post('/insert-advanced-salary', 'SalaryController@store');
 Route::get('/all-salary', 'SalaryController@all_advanced_salary')->name('all.salary');
 Route::get('/pay-salary', 'SalaryController@pay_salary')->name('pay.salary');
+//category route==============
+Route::get('/add-category', 'CategoryController@index')->name('add.category');
+Route::post('/insert-category', 'CategoryController@store');
+Route::get('/all-category', 'CategoryController@all_category')->name('all.category');
+Route::get('/delete-category/{id}', 'CategoryController@delete_category');
+Route::get('/edit-category/{id}', 'CategoryController@edit_category');
+Route::post('/update-category/{id}', 'CategoryController@update_category');
+//category route==============
+Route::get('/add-product', 'ProductController@index')->name('add.product');
+Route::post('/insert-product', 'ProductController@store');
+Route::get('/all-product', 'ProductController@all_product')->name('all.product');
+Route::get('/delete-product/{id}', 'ProductController@delete_product');
+Route::get('/edit-product/{id}', 'ProductController@edit_product');
+Route::post('/update-product/{id}', 'ProductController@update_product');
+//expense route==============
+Route::get('/add-expense', 'ExpenseController@index')->name('add.expense');
+Route::post('/insert-expense', 'ExpenseController@store');
+Route::get('/today-expense', 'ExpenseController@today_expense')->name('today.expense');
+Route::get('/edit-today-expense/{id}', 'ExpenseController@edit_today_expense');
+Route::post('/update-today-expense/{id}', 'ExpenseController@update_today_expense');
+Route::get('/month-expense', 'ExpenseController@monthly_expense')->name('month.expense');
+Route::get('/year-expense', 'ExpenseController@yearly_expense')->name('year.expense');
+//individual monthly expense
+
+Route::get('/January-expense', 'ExpenseController@january_expense')->name('January.expense');
+Route::get('/February-expense', 'ExpenseController@february_expense')->name('February.expense');
+Route::get('/March-expense', 'ExpenseController@march_expense')->name('March.expense');
+Route::get('/April-expense', 'ExpenseController@april_expense')->name('April.expense');
+Route::get('/May-expense', 'ExpenseController@may_expense')->name('May.expense');
+Route::get('/June-expense', 'ExpenseController@june_expense')->name('June.expense');
+Route::get('/July-expense', 'ExpenseController@july_expense')->name('July.expense');
+Route::get('/August-expense', 'ExpenseController@august_expense')->name('August.expense');
+Route::get('/September-expense', 'ExpenseController@september_expense')->name('September.expense');
+Route::get('/October-expense', 'ExpenseController@october_expense')->name('October.expense');
+Route::get('/November-expense', 'ExpenseController@november_expense')->name('November.expense');
+Route::get('/December-expense', 'ExpenseController@december_expense')->name('December.expense');
+
+//attendence route==============
+Route::get('/take-attendence', 'AttendenceController@take_attendence')->name('take.attendence');
+Route::get('/all-attendence', 'AttendenceController@all_attendence')->name('all.attendence');
+Route::post('/insert-attendence', 'AttendenceController@store');
+//setting route==============
+Route::get('/website-setting', 'AttendenceController@Setting')->name('setting');
+Route::get('/edit-attendence/{edit_date}', 'AttendenceController@edit_attendence');

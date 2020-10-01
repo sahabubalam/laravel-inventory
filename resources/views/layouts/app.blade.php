@@ -208,6 +208,9 @@
                             <li>
                                 <a href="index.html" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                             </li>
+                            <li>
+                                <a href="index.html" class="waves-effect"><i class="md md-home"></i><b><span class="text-primary"> POS </span></b></a>
+                            </li>
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
@@ -234,7 +237,7 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Advanced Salary </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Salary(EMP) </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{route('add.salary')}}">Add New</a></li>
                                     <li><a href="{{route('all.salary')}}">All Advanced Salary</a></li>
@@ -243,68 +246,56 @@
                                    
                                 </ul>
                             </li>
-
-
-                            <li>
-                                <a href="calendar.html" class="waves-effect"><i class="md md-event"></i><span> Calendar </span></a>
-                            </li>
-
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Elements </span> <span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Category </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="typography.html">Typography</a></li>
-                                    <li><a href="buttons.html">Buttons</a></li>
-                                    <li><a href="panels.html">Panels</a></li>
-                                    <li><a href="checkbox-radio.html">Checkboxs-Radios</a></li>
-                                    <li><a href="tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                    <li><a href="modals.html">Modals</a></li>
-                                    <li><a href="bootstrap-ui.html">BS Elements</a></li>
-                                    <li><a href="progressbars.html">Progress Bars</a></li>
-                                    <li><a href="notification.html">Notification</a></li>
-                                    <li><a href="sweet-alert.html">Sweet-Alert</a></li>
+                                    <li><a href="{{route('add.category')}}">Add New</a></li>
+                                    <li><a href="{{route('all.category')}}">All Category</a></li>
+                                   
                                 </ul>
                             </li>
-
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Components </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Expense </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="grid.html">Grid</a></li>
-                                    <li><a href="portlets.html">Portlets</a></li>
-                                    <li><a href="widgets.html">Widgets</a></li>
-                                    <li><a href="nestable-list.html">Nesteble</a></li>
-                                    <li><a href="ui-sliders.html">Sliders </a></li>
-                                    <li><a href="gallery.html">Gallery </a></li>
-                                    <li><a href="pricing.html">Pricing Table </a></li>
+                                    <li><a href="{{route('add.expense')}}">Add New</a></li>
+                                    <li><a href="{{route('today.expense')}}">Today Expense</a></li>
+                                    <li><a href="{{route('month.expense')}}">Monthly Expense</a></li>
+                                    <li><a href="{{route('year.expense')}}">Yearly Expense</a></li>
+                                   
                                 </ul>
                             </li>
-
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-redeem"></i> <span> Icons </span> <span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Products </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="material-icon.html">Material Design</a></li>
-                                    <li><a href="ion-icons.html">Ion Icons</a></li>
-                                    <li><a href="font-awesome.html">Font awesome</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Forms </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="form-elements.html">General Elements</a></li>
-                                    <li><a href="form-validation.html">Form Validation</a></li>
+                                    <li><a href="{{route('add.product')}}">Add New</a></li>
+                                    <li><a href="{{route('all.product')}}">All Products</a></li>
                                    
                                 </ul>
                             </li>
 
+
+
+                        
+
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-view-list"></i><span> Data Tables </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="md md-redeem"></i> <span> Attendence </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="tables.html">Basic Tables</a></li>
-                                    <li><a href="table-datatable.html">Data Table</a></li>
-                                    <li><a href="tables-editable.html">Editable Table</a></li>
-                                    <li><a href="responsive-table.html">Responsive Table</a></li>
+                                    <li><a href="{{route('take.attendence')}}">Take Attendence</a></li>
+                                    <li><a href="{{route('all.attendence')}}">All Attendence</a></li>
+                                    
                                 </ul>
                             </li>
+                            
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Setting </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{route('setting')}}">Setting</a></li>
+                                  
+                                   
+                                </ul>
+                            </li>
+
+                          
 
                            
                         </ul>

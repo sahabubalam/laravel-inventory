@@ -17,8 +17,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Pay Salary</h3>
-                    <h1>{{date('F Y')}}</h1>
+                    <h3 class="panel-title">Datatable</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -26,35 +25,22 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Photo</th>
-                                        <th>Salary</th>
-                                        <th>Month</th>
+                                        <th>SI</th>
+                                        <th>Category Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                             
                                 <tbody>
-                                @php 
-                                    $month=date("F",strtotime('-1 month'));
-                                    $salary=DB::table('advanced_salaries')
-                                    ->join('employees','advanced_salaries.employee_id','employees.id')
-                                    ->select('advanced_salaries.*','employees.name','employees.salary','employees.photo')
-                                    ->where('month',$month)
-                                    ->get();
-                                @endphp
-                                @foreach($employee as $row)
+                                @foreach($category as $row)
                                     <tr>
-                                   
-                                        <td>{{$row->name}}</td>
-                                       
-                                        <td><img src="{{$row->photo}}" style="height:80px;width:80px"></td>
-                                        <td>{{$row->salary}}</td>
-                                        <td>{{date('F', strtotime("-1 month"))}} </td>
+                                        <td>{{$row->id}}</td>
+                                        <td>{{$row->category_name}}</td>
+                           
                                         <td>
-                                            <a href="" class="btn btn-sm btn-info">Pay Now</a>
-                                            
+                                            <a href="{{URL::to('edit-category/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                                            <a href="{{URL::to('delete-category/'.$row->id)}}" class="btn btn-sm btn-danger">Delete</a>
                                         </td>
                                     </tr> 
                                 @endforeach
