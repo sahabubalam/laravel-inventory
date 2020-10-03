@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use DB;
 use App\Model\Product;
 
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ProductsImport;
+ 
+
+
 class ProductController extends Controller
 {
    public function index()
@@ -192,4 +198,30 @@ class ProductController extends Controller
 
     }
    }
+
+   //import product
+
+   public function import_product()
+   {
+       return view('frontend.product.import_product');
+   }
+    public function export() 
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $import=Excel::import(new ProductsImport, $request->file('import_file'));
+        if($import) {
+            $notification=array(
+                'message' => 'Successfully Product Imported',
+                'alert-type'=>'success'
+            );
+            return Redirect()->route('all.product')->with($notification);
+
+        } else{
+            return Redirect()->back()->with($notification);
+        }
+    }
 }

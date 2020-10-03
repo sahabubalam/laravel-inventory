@@ -54,13 +54,17 @@ Route::get('/all-category', 'CategoryController@all_category')->name('all.catego
 Route::get('/delete-category/{id}', 'CategoryController@delete_category');
 Route::get('/edit-category/{id}', 'CategoryController@edit_category');
 Route::post('/update-category/{id}', 'CategoryController@update_category');
-//category route==============
+//product route==============
 Route::get('/add-product', 'ProductController@index')->name('add.product');
 Route::post('/insert-product', 'ProductController@store');
 Route::get('/all-product', 'ProductController@all_product')->name('all.product');
 Route::get('/delete-product/{id}', 'ProductController@delete_product');
 Route::get('/edit-product/{id}', 'ProductController@edit_product');
 Route::post('/update-product/{id}', 'ProductController@update_product');
+
+Route::get('/import-product', 'ProductController@import_product')->name('import.product');
+Route::get('/export', 'ProductController@export')->name('export');
+Route::get('/import', 'ProductController@import')->name('import');
 //expense route==============
 Route::get('/add-expense', 'ExpenseController@index')->name('add.expense');
 Route::post('/insert-expense', 'ExpenseController@store');
@@ -91,3 +95,7 @@ Route::post('/insert-attendence', 'AttendenceController@store');
 //setting route==============
 Route::get('/website-setting', 'AttendenceController@Setting')->name('setting');
 Route::get('/edit-attendence/{edit_date}', 'AttendenceController@edit_attendence');
+
+//pos route
+
+Route::get('/pos', 'PosController@index')->name('pos');

@@ -63,7 +63,7 @@ class CustomerController extends Controller
                                  'message' => 'Successfully Customer inserted',
                                  'alert-type'=>'success'
                              );
-                             return Redirect()->route('all.customer')->with($notification);
+                             return Redirect()->back()->with($notification);
 
                          } else{
                              $notification=array(
