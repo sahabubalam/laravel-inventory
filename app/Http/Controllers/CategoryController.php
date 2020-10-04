@@ -8,6 +8,15 @@ use App\Model\Category;
 
 class CategoryController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    public function index()
    {
        return view('frontend.category.add_category');

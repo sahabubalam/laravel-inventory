@@ -8,6 +8,15 @@ use App\Model\Attendence;
 
 class AttendenceController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    public function take_attendence()
    {
        $employee=DB::table('employees')->get();

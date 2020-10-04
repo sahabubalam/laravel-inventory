@@ -16,6 +16,8 @@
                     </div>
                 </div><br>
                 <div class="row">
+
+            
                             <div class="col-lg-12 col-md-12 col-sm-12 ">
                                 <div class="portfolioFilter">
                                 @foreach($category as $row)
@@ -24,24 +26,10 @@
                                 </div>
                             </div>
                         </div>
-                <br>
+                     <br>
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel">
-                            <h4  class="text-info">Customer
-                            <a href="#" class="btn btn-sm pull-right btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add Customer</a>
-                            
-                            </h4>
-                            <select class="form-control">
-                                <option disabled="" selected="">Select Customer</option>
-                                @foreach($customer as $row)
-                                <option>{{$row->name}}</option>
-                                @endforeach
-                                
-
-                            </select>
-                        
-                        </div>
+                       
 
                     <div class="price_card text-center">
                         
@@ -56,20 +44,26 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            @php 
+                            $cart=Cart::content();
+                            @endphp
                             <tbody>
+                            @foreach($cart as $row)
                                 <tr>
-                                    <th>laptop</th>
+                                    <th>{{$row->name}}</th>
                                     <th>
-                                        <form>
-                                            <input type="number" name="" value="2" style="width:40px">
+                                        <form action="{{url('cart-update/'.$row->rowId)}}" method="post">
+                                        @csrf 
+                                            <input type="number" name="qty" value="{{$row->qty}}" style="width:40px">
                                             <button type="submit" class="btn btn-sm btn-success" style="margin-top:-2px"><i class="fas fa-check"></i></button>
                                         </form>
                                     </th>
-                                    <th>2000</th>
-                                    <th>4000</th>
-                                    <th><i class="fas fa-trash-alt"></i></th>
+                                    <th>{{$row->price}}</th>
+                                    <th>{{$row->price*$row->qty}}</th>
+                                    <th><a href="{{URL::to('cart-remove/'.$row->rowId)}}"><i class="fas fa-trash-alt"></i></a></th>
                                 
                                 </tr>
+                                @endforeach
                             
                             </tbody>
                            
@@ -77,16 +71,44 @@
                             
                         </ul>
                         <div class="pricing-header bg-primary">
-                            <p style="font-size:19px">Quantity : 14000</p>
-                            <p style="font-size:19px">Product : 14000</p>
-                            <p style="font-size:19px">Vat : 14000</p>
+                            <p style="font-size:19px">Quantity : {{Cart::count()}}</p>
+                            <p style="font-size:19px">Sub Total : {{Cart::subtotal()}}</p>
+                           
+                           
+                            <p style="font-size:19px">Vat :{{Cart::tax()}}</p>
                             <hr>
-                            <h2><p>Total : 14000</p></h2>
-                        </div>
-                        <button class="btn btn-success">Create Invoice</button>
-                    </div> <!-- end Pricing_card -->
+                            <h2><p>Total : {{Cart::total()}}</p></h2>
+                            <form action="{{url('create-invoice')}}" method="post">
+                            @csrf
+                            <div class="panel"><br><br>
+                            @error('customer_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <h4  class="text-info">Selecet Customer
+                            <a href="#" class="btn btn-sm pull-right btn-primary waves-effect waves-light"
+                             data-toggle="modal" data-target="#con-close-modal">Add Customer</a>
+                            
+                            </h4>
+                            @php 
+                            $customer=DB::table('customers')->get();
+                            @endphp
+                            <select class="form-control" name="customer_id">
+                                <option disabled="" selected="">Select Customer</option>
+                                @foreach($customer as $cus)
+                                <option value="{{$cus->id}}">{{$cus->name}}</option>
+                                @endforeach
+                                
 
+                            </select>
+                        
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Create Invoice</button>
+                    </div> <!-- end Pricing_card -->
+                    </form>
                     </div>
+
+              
                     <div class="col-lg-6">
                         <table id="datatable" class="table table-striped table-bordered">
                                     <thead>
@@ -103,15 +125,22 @@
                                     <tbody>
                                     @foreach($product as $row)
                                         <tr>
+                                        <form action="{{url('add-cart')}}" method="post">
+                                        @csrf
+                                            <input type="hidden" name="id" value="{{$row->id}}">
+                                            <input type="hidden" name="name" value="{{$row->product_name}}">
+                                            <input type="hidden" name="qty" value="1">
+                                            <input type="hidden" name="price" value="{{$row->selling_price}}">
                                             <td>
-                                            <a href="#" style="font-size:20px"><i class="fas fa-plus-square"></i></a>
+                                           
                                             <img src="{{URL::to($row->product_image)}}" width="60px"  height="60px">
                                             </td>
                                             <td>{{$row->product_name}}</td>
                                             <td>{{$row->category_name}}</td>
                                             <td>{{$row->product_code}}</td>
+                                            <td><button type="submit" class="btn btn-sm btn-info"><i class="fas fa-plus-square"></button></td>
                             
-                                            
+                                        </form>    
                                         </tr> 
                                     @endforeach
                                     </tbody>

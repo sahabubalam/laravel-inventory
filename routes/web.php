@@ -99,3 +99,11 @@ Route::get('/edit-attendence/{edit_date}', 'AttendenceController@edit_attendence
 //pos route
 
 Route::get('/pos', 'PosController@index')->name('pos');
+//cart route
+Route::post('/add-cart', 'CartController@add_cart');
+Route::post('/cart-update/{rowId}', 'CartController@update_cart');
+Route::get('/cart-remove/{rowId}', 'CartController@remove_cart');
+Route::post('/create-invoice', 'CartController@create_invoice');
+Route::post('/final-invoice', 'CartController@final_invoice');
+
+
